@@ -1,21 +1,19 @@
 <template lang="pug">
-  .login
-    Header
-  //- .login.flex-col.bg-pri
-  //-   .login__logo.flex.center-center
-  //-     img(:src="logo")
-  //-     .flex-col
-  //-       h2 市北公立醫院
-  //-       h5 SHIHPEI PUBLIC HOSPITAL
-  //-   .login__form.flex-col.bg-white
-  //-     .login__field.flex
-  //-       label 使用者代碼
-  //-       el-input(v-model="username")
-  //-     .login__field.flex
-  //-       label 使用者密碼
-  //-       el-input(type="password" v-model="password")
-  //-     span.forgot.pointer 忘記密碼?
-  //-     el-button.login__button.bg-btn(@click="handleLogin") 登入
+  .login.flex-col.bg-pri
+    .login__logo.flex.center-center
+      img(:src="logo")
+      .flex-col.center-center
+        h2 市北公立醫院
+        h5 SHIHPEI PUBLIC HOSPITAL
+    .login__form.flex-col.bg-white
+      .login__field.flex
+        label 使用者代碼
+        el-input(v-model="username")
+      .login__field.flex
+        label 使用者密碼
+        el-input(type="password" v-model="password")
+      span.forgot.pointer 忘記密碼?
+      el-button.login__button.bg-btn(@click="handleLogin") 登入
 
     
 </template>
@@ -23,6 +21,7 @@
 <script>
 import logo from '/src/assets/images/公立醫院Logo.png'
 import Header from '@/components/Header'
+import Progress from './Progress'
 
 export default {
   data() {
@@ -33,7 +32,8 @@ export default {
     };
   },
   components: {
-    Header
+    Header,
+    Progress
   },
   methods: {
     handleLogin() {

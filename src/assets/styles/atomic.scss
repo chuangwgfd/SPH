@@ -36,3 +36,14 @@
 .pointer {
   cursor: pointer;
 }
+
+.breadcrumb {
+  margin-bottom: .5rem;
+  font-size: 1rem;
+  .breadActive {
+    * {
+      font-weight: bold !important;
+      color: $color-1 !important;
+    }
+  }
+}
