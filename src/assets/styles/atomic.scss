@@ -1,0 +1,38 @@
+.bg-pri {
+  background: $color-1;
+}
+
+.bg-header {
+  background: $color-2;
+}
+
+.bg-btn {
+  color: #fff;
+  background: $color-3;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.center-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,67 @@
+<template lang="pug">
+  .header.flex.bg-header
+    .header__logo.flex
+      img(:src="logo")
+      .flex-col
+        h2 市北公立醫院
+        h5 SHIHPEI PUBLIC HOSPITAL
+      
+    el-menu.menu(
+      default-active="2"
+      mode="horizontal"
+    )
+      template(v-for="(item, i) in menus")
+        el-menu-item(:key="i" :index="`${i+1}`") {{ item.label }}
+
+</template>
+
+<script>
+import logo from '@/assets/images/公立醫院Logo.png'
+export default {
+  name: 'Header',
+  data() {
+    return {
+      logo,
+      menus: [
+        { label: '部門科別' },
+        { label: '病歷管理' },
+        { label: '門診科別' },
+        { label: '刀房資訊' },
+        { label: '設備管理' },
+        { label: '系統設定' },
+      ]
+    }
+  },
+}
+</script>
+
+<style lang="scss">
+  .header {
+    height: 128px;
+    padding: 1.5rem 2.5rem 0;
+    
+    &__logo {
+      height: 85px;
+      margin-right: 100px;
+      img {
+        height: 100%;
+        margin-right: 1rem;
+      }
+      h2, h5 {
+        color: $color-3;
+      }
+      h2 {
+        margin: 0 0 .5rem;
+        font-size: 2.5rem;
+      }
+      h5 {
+        font-size: 1rem;
+        margin: 0;
+      }
+    }
+
+    .menu {
+      align-self: flex-end;
+    }
+  }
+</style>
