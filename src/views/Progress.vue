@@ -10,7 +10,6 @@
         el-breadcrumb.breadcrumb(separator-class="el-icon-arrow-right")
           el-breadcrumb-item 病歷管理
           el-breadcrumb-item.breadActive 看診進度
-        SideMenu
         .wrapper.border
           .label 今日門診進度
           .table.border
@@ -19,9 +18,9 @@
                 .t-cell {{ item.label }}
             .t-body
               template(v-for="(row, i) in tableData")
-                .t-row.grid(:key="i" :class="row.disabled && 'disabled'")
+                .t-row.grid(:key="i" :class="row.disabled && 'disabled'" @click="handleCheckPatient(row)")
                   template(v-for="item in headers")
-                    .t-cell(v-if="item.key === 'order'") {{ i }}
+                    .t-cell(v-if="item.key === 'order'") {{ i+22 | formatOrder }}
                     .t-cell(v-else-if="item.key === 'name'") {{ row[item.key] | formatName }}
                     .t-cell(v-else) {{ row[item.key] | formatState }}
     
@@ -51,7 +50,9 @@ export default {
         { name: '林斯文', id: '23546', status: 'pass', comment: '', disabled: true },
         { name: '林斯文', id: '23546', status: 'uncheck', comment: '', disabled: true },
         { name: '林斯文', id: '23546', status: 'done', comment: '', disabled: true },
-        { name: '林斯文', id: '23546', status: 'wait', comment: '', disabled: false },
+        { name: '許永馨', id: '3532483', status: 'wait', comment: '', disabled: false, clickabled: true },
+        { name: '許津儀', id: '2392803', status: 'wait', comment: '', disabled: false, clickabled: true },
+        { name: '張志先', id: '3575083', status: 'wait', comment: '', disabled: false, clickabled: true },
       ]
     };
   },
@@ -67,10 +68,23 @@ export default {
     },
     formatName(val) {
       return val[0] + '◯' + val[2];
-    }
+    },
+    formatOrder(val) {
+      return String(val).padStart(3, '0');
+    },
+
   },
   methods: {
-    
+    /**
+     * 
+     */
+     handleCheckPatient(row) {
+      if (!row.clickabled) return
+      this.$router.push({
+        path: '/patient',
+        query: { id: row.id }
+      })
+    }
   }
 };
 </script>
@@ -140,6 +154,7 @@ $table-border: 1px solid #ccc;
         }
       }
       .t-cell {
+        cursor: default;
         padding: .75rem 1rem;
         &:not(:last-child) {
           border-right: $table-border;
