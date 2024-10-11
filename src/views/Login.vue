@@ -11,7 +11,7 @@
         el-input(v-model="username")
       .login__field.flex
         label 使用者密碼
-        el-input(type="password" v-model="password")
+        el-input(type="password" v-model="password" @keyup.enter.native="handleLogin")
       span.forgot.pointer 忘記密碼?
       el-button.login__button.bg-btn(@click="handleLogin") 登入
 
