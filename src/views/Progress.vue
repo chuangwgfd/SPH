@@ -10,6 +10,7 @@
         el-breadcrumb.breadcrumb(separator-class="el-icon-arrow-right")
           el-breadcrumb-item 病歷管理
           el-breadcrumb-item.breadActive 看診進度
+        SideMenu
         .wrapper.border
           .label 今日門診進度
           .table.border
@@ -28,10 +29,12 @@
 
 <script>
 import Layout from '@/components/Layout'
+import SideMenu from '@/components/SideMenu.vue';
 
 export default {
   components: {
-    Layout
+    Layout,
+    SideMenu
   },
   data() {
     return {
