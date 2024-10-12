@@ -11,7 +11,7 @@
       mode="horizontal"
     )
       template(v-for="(item, i) in menus")
-        el-menu-item(:key="i" :index="`${i+1}`") {{ item.label }}
+        el-menu-item(:key="i" :index="`${i+1}`" @click="$router.push('/main')") {{ item.label }}
 
 </template>
 
@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .header {
     height: 128px;
     padding: 1.5rem 2.5rem 0;

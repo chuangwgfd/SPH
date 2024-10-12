@@ -22,18 +22,20 @@
                   template(v-for="item in headers")
                     .t-cell(v-if="item.key === 'order'") {{ i+22 | formatOrder }}
                     .t-cell(v-else-if="item.key === 'name'") {{ row[item.key] | formatName }}
-                    .t-cell(v-else) {{ row[item.key] | formatState }}
+                    .t-cell(v-else :style="{ color: (row[item.key] === 'uncheck' || row[item.key] === 'pass') && 'red' }") {{ row[item.key] | formatState }}
     
 </template>
 
 <script>
 import Layout from '@/components/Layout'
 import SideMenu from '@/components/SideMenu.vue';
+import RightTable from '@/components/RightTable.vue';
 
 export default {
   components: {
     Layout,
-    SideMenu
+    SideMenu,
+    RightTable
   },
   data() {
     return {
@@ -45,14 +47,20 @@ export default {
         { label: '備註', key: 'comment' },
       ],
       tableData: [
-        { name: '林斯文', id: '23546', status: 'done', comment: '', disabled: true },
-        { name: '林斯文', id: '23546', status: 'done', comment: '', disabled: true },
-        { name: '林斯文', id: '23546', status: 'pass', comment: '', disabled: true },
-        { name: '林斯文', id: '23546', status: 'uncheck', comment: '', disabled: true },
-        { name: '林斯文', id: '23546', status: 'done', comment: '', disabled: true },
+        { name: '林斯文', id: '3058220', status: 'done', comment: '', disabled: true },
+        { name: '劉O安', id: '3094238', status: 'done', comment: '', disabled: true },
+        { name: '陳O玲', id: '2104585', status: 'pass', comment: '', disabled: true },
+        { name: '李O庭', id: '2205604', status: 'uncheck', comment: '', disabled: true },
+        { name: '林O婷', id: '3049583', status: 'done', comment: '', disabled: true },
         { name: '許永馨', id: '3532483', status: 'wait', comment: '', disabled: false, clickabled: true },
         { name: '許津儀', id: '2392803', status: 'wait', comment: '', disabled: false, clickabled: true },
-        { name: '張志先', id: '3575083', status: 'wait', comment: '', disabled: false, clickabled: true },
+        // { name: '張志先', id: '3575083', status: 'wait', comment: '', disabled: false, clickabled: true },
+        { name: '吳O宇', id: '3028550', status: 'wait', comment: '' },
+        { name: '楊O易', id: '2403622', status: 'wait', comment: '' },
+        { name: '張O瑋', id: '2105968', status: 'wait', comment: '' },
+        { name: '廖慈安', id: '', status: 'wait', comment: '' },
+        { name: '張雅晴', id: '', status: 'wait', comment: '' },
+        { name: '王士強', id: '', status: 'wait', comment: '' },
       ]
     };
   },

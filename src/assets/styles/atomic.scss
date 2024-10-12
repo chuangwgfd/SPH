@@ -24,9 +24,17 @@
   flex-direction: column;
 }
 
+.align-center {
+  align-items: center;
+}
+
 .center-center {
   justify-content: center;
   align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .grid {
@@ -46,4 +54,12 @@
       color: $color-1 !important;
     }
   }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }

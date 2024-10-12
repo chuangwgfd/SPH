@@ -22,7 +22,7 @@
                   .label.col {{ item.label }}
                   .col {{ patientData[item.key] }}
 
-              button.actionBtn.pointer.flex-col.center-center
+              button.actionBtn.pointer.flex-col.center-center(@click="handleClickBtn")
                 span 進行
                 span 看診
                 Icon.arrow(icon="tdesign:swap-right")
@@ -148,7 +148,14 @@ export default {
   filters: {
   },
   methods: {
-    
+    handleClickBtn() {
+      this.$router.push({
+        path: '/patient/diagnosis',
+        query: {
+          id: this.$route.query.id
+        }
+      })
+    },
   }
 };
 </script>
