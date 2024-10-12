@@ -2,7 +2,7 @@
   .header.flex.bg-header
     .header__logo.flex.pointer(@click="$router.push('/')")
       img(:src="logo")
-      .flex-col
+      .flex-col.center-center
         h2 市北公立醫院
         h5 SHIHPEI PUBLIC HOSPITAL
       
@@ -53,11 +53,11 @@ export default {
         color: $color-3;
       }
       h2 {
-        margin: 0 0 .5rem;
-        font-size: 2.5rem;
+        margin: 0 0 .1rem;
+        font-size: 2rem;
       }
       h5 {
-        font-size: 1rem;
+        font-size: .9rem;
         margin: 0;
       }
     }

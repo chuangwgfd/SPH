@@ -1,5 +1,6 @@
 <template lang="pug">
   .rightTable.flex-col
+    slot
     .doctor-info.flex
       span 江浩宇 醫師
       span 科別：整型外科

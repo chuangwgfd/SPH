@@ -174,7 +174,7 @@ export default {
         }
       }
       .tab-fake {
-        padding: .75rem 10% 0 0;
+        padding: .75rem 1.5rem 0 0;
         text-decoration: underline;
         border-bottom: .5px solid #ccc;
       }
@@ -207,11 +207,13 @@ export default {
           gap: 1rem;
         }
         .main-img {
+          border: 1px solid $color-1;
           overflow: hidden;
         }
         .sub-imgs {
           width: 30%;
           .img-wrapper {
+            border: 1px solid $color-1;
             position: relative;
             .label {
               position: absolute;
@@ -228,7 +230,8 @@ export default {
           align-self: end;
         }
         img {
-          border: 1px solid $color-1;
+          min-width: 100%;
+          min-height: 100%;
           object-fit: cover;
           // height: 100%;
           width: 100%;

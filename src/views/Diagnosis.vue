@@ -5,7 +5,6 @@
       .tabs.flex
         .tab-item.pointer(v-for="(item, i) in tabs" :class="{ active: activeTab(i) }" @click="handleClickTab(i)") {{ item }}
         .tab-fake.flex-1.text-right
-          span.pointer(@click="$router.push('/main')") 返回看診進度＞
       .main-section.flex
         .flex-col
           .base-info.grid
@@ -41,6 +40,7 @@
                   .cell(:class="{ 'text-center': key === 'num' || key === 'days' || key === 'usage', 'text-right': key === 'per_mount' || key === 'total_mount' }") {{ item }}
 
         RightTable
+          .back.pointer(@click="$router.push('/main')") 返回看診進度＞
     
 </template>
 
@@ -223,11 +223,19 @@ export default {
       }
       .tab-fake {
         padding: .75rem 10% 0 0;
-        text-decoration: underline;
         border-bottom: .5px solid #ccc;
       }
     }
+    .back {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      text-decoration: underline;
+    }
     .main-section {
+      .rightTable {
+        position: relative;
+      }
       background: $gray-3;
       padding: 1rem 1.5rem;
       gap: 1rem;

@@ -14,10 +14,10 @@
         .wrapper-inner.flex
           .side
             SideMenu
-          .info-section
+          .info-section.flex-1
             label 病患基本資料
             .flex
-              .basic.grid
+              .basic.grid.flex-1
                 template(v-for="item in infoCol")
                   .label.col {{ item.label }}
                   .col {{ patientData[item.key] }}
@@ -223,7 +223,7 @@ $table-border: 1px solid #ccc;
     }
 
     .actionBtn {
-      flex: 1;
+      width: 90px;
       gap: .25rem;
       background: $color-3;
       color: #fff;
