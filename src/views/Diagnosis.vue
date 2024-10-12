@@ -4,7 +4,8 @@
       .top-section 市北公立醫院 > 掛號作業｜日期：2025/1/20
       .tabs.flex
         .tab-item.pointer(v-for="(item, i) in tabs" :class="{ active: activeTab(i) }" @click="handleClickTab(i)") {{ item }}
-        .tab-fake.flex-1.text-right 返回看診進度＞
+        .tab-fake.flex-1.text-right
+          span.pointer(@click="$router.push('/main')") 返回看診進度＞
       .main-section.flex
         .flex-col
           .base-info.grid
@@ -216,8 +217,13 @@ export default {
           background: $gray-3;
           border-bottom: none;
         }
+        &:hover {
+          font-weight: bold;
+        }
       }
       .tab-fake {
+        padding: .75rem 10% 0 0;
+        text-decoration: underline;
         border-bottom: .5px solid #ccc;
       }
     }

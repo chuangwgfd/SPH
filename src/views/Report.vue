@@ -4,7 +4,8 @@
       .top-section 市北公立醫院 > 掛號作業｜日期：2025/1/20
       .tabs.flex
         .tab-item.pointer(v-for="(item, i) in tabs" :class="{ active: activeTab(i) }" @click="handleClickTab(i)") {{ item }}
-        .tab-fake.flex-1.text-right 返回看診進度＞
+        .tab-fake.flex-1.text-right
+          span.pointer(@click="$router.push('/main')") 返回看診進度＞
       .main-section.flex
         .left-section.flex-col
           .info.flex-col
@@ -26,8 +27,12 @@
             .main-img.flex-1
               img(:src="photos[largeImageIndex].src")
             .sub-imgs.flex-col.justify-between
-              img(:src="photos[smallImageIndices[0]].src" @click="swapImages(1)")
-              img(:src="photos[smallImageIndices[1]].src" @click="swapImages(2)")
+              .img-wrapper
+                img(:src="photos[smallImageIndices[0]].src" @click="swapImages(1)")
+                .label {{ photos[smallImageIndices[0]].name }}
+              .img-wrapper
+                img(:src="photos[smallImageIndices[1]].src" @click="swapImages(2)")
+                .label {{ photos[smallImageIndices[1]].name }}
         .right-section.flex-col
           SmallTable(title="癌細胞追蹤結果" :list="cell" height="220px")
           .metastasis
@@ -164,8 +169,13 @@ export default {
           background: $gray-3;
           border-bottom: none;
         }
+        &:hover {
+          font-weight: bold;
+        }
       }
       .tab-fake {
+        padding: .75rem 10% 0 0;
+        text-decoration: underline;
         border-bottom: .5px solid #ccc;
       }
     }
@@ -175,10 +185,11 @@ export default {
       gap: 1rem;
 
       .left-section {
-        width: 220px;
+        width: 180px;
         font-size: 18px;
         gap: 1rem;
         .info {
+          font-size: 16px;
           gap: .5rem;
         }
       }
@@ -199,7 +210,19 @@ export default {
           overflow: hidden;
         }
         .sub-imgs {
-          width: 32%;
+          width: 30%;
+          .img-wrapper {
+            position: relative;
+            .label {
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              background: rgba($color-3, .9);
+              color: #fff;
+              padding: .5rem;
+              text-align: center;
+            }
+          }
         }
         .img-3 {
           align-self: end;
@@ -212,7 +235,7 @@ export default {
         }
       }
       .right-section {
-        width: 220px;
+        width: 180px;
         gap: 1rem;
         .metastasis {
           border: 1px solid #ccc;
