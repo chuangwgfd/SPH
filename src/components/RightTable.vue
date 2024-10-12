@@ -22,7 +22,7 @@
       .t-body
         .t-row.grid(v-for="(row, i) in data2")
           template(v-for="item in header")
-            .t-cell(v-if="item.key === 'order'") {{ i | formatOrder }}
+            .t-cell(v-if="item.key === 'order'") {{ i+1 | formatOrder }}
             .t-cell(v-else) {{ row[item.key] }}
         
     
