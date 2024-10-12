@@ -2,9 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/Login.vue'
 import Progress from '@/views/Progress.vue'
-import HomeView from '../views/HomeView.vue'
 import PatientInfo from '@/views/PatientInfo.vue'
 import Diagnosis from '@/views/Diagnosis.vue'
+import Report from '@/views/Report.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +28,11 @@ const routes = [
     path: '/patient/diagnosis',
     name: 'diagnosis',
     component: Diagnosis
+  },
+  {
+    path: '/patient/report',
+    name: 'report',
+    component: Report
   }
 ]
 

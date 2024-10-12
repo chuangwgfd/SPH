@@ -3,8 +3,8 @@
     .diagnosis
       .top-section 市北公立醫院 > 掛號作業｜日期：2025/1/20
       .tabs.flex
-        .tab-item.pointer(v-for="(item, i) in tabs" :class="{ active: i === 3 }") {{ item }}
-        .tab-fake.flex-1
+        .tab-item.pointer(v-for="(item, i) in tabs" :class="{ active: activeTab(i) }" @click="handleClickTab(i)") {{ item }}
+        .tab-fake.flex-1.text-right 返回看診進度＞
       .main-section.flex
         .flex-col
           .base-info.grid
@@ -141,8 +141,15 @@ export default {
           datetime: '2025/3/3 09:20',
           doctor_order: '',
           diagnosis: [
-            { name: 'Chloramohenicol', action1: 'RASH', action2: '', time: '2025.02.12' },
-            { name: '　', action1: '　', action2: '　', time: '　' },
+            'ICD:R030',
+            '血壓上升，非診斷為高血壓者',
+            '',
+            'ICD23:R14',
+            '胃腸脹氣及相關病況',
+            '',
+            '　',
+            '',
+            '',
           ],
           drug: [
             { num: '532640', name: 'Lansoprazole', per_mount: '0.50', days: '3', total_mount: '3.00', usage: '1天3次' },
@@ -161,6 +168,31 @@ export default {
   },
   mounted() {
     window.scrollTo(0, 0); // 切换到该页面时滚动到顶部
+  },
+  methods: {
+    activeTab(i) {
+      let path = this.$route.path
+      if (i === 2 && path === '/patient/report') return true
+      if (i === 3 && path === '/patient/diagnosis') return true
+    },
+    handleClickTab(i) {
+      let id = this.$route.query.id;
+      let path = this.$route.path
+      if (id !== '2392803') return
+      if (i === 2 && path !== '/patient/report') this.$router.push({
+        path: '/patient/report',
+        query: {
+          id: this.$route.query.id
+        }
+      })
+      if (i === 3 && path !== '/patient/diagnosis') this.$router.push({
+        path: '/patient/diagnosis',
+        query: {
+          id: this.$route.query.id
+        }
+      })
+
+    },
   },
 }
 </script>

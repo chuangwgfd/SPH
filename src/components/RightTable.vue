@@ -10,7 +10,7 @@
       .t-header.grid
         .t-cell(v-for="item in header") {{ item.label }}
       .t-body
-        .t-row.grid(v-for="(row, i) in data1")
+        .t-row.grid.pointer(v-for="(row, i) in data1" @click="handleClickRow(row)")
           template(v-for="item in header")
             .t-cell(v-if="item.key === 'order'") {{ i+23 | formatOrder }}
             .t-cell(v-else) {{ row[item.key] }}
@@ -20,7 +20,7 @@
       .t-header.grid
         .t-cell(v-for="item in header") {{ item.label }}
       .t-body
-        .t-row.grid(v-for="(row, i) in data2")
+        .t-row.grid.pointer(v-for="(row, i) in data2")
           template(v-for="item in header")
             .t-cell(v-if="item.key === 'order'") {{ i+1 | formatOrder }}
             .t-cell(v-else) {{ row[item.key] }}
@@ -45,7 +45,7 @@ export default {
         { name: '陳文玲', gender: '女', id: '2462503', comment: '' },
         { name: '李世庭', gender: '男', id: '2622886', comment: '' },
         { name: '林小婷', gender: '女', id: '3532483', comment: '' },
-        { name: '許永馨', gender: '女', id: '3240572', comment: '' },
+        { name: '許永馨', gender: '女', id: '3532483', comment: '' },
         { name: '許津儀', gender: '女', id: '2392803', comment: '' },
         { name: '章小杰', gender: '男', id: '2869005', comment: '' },
         { name: '王安妮', gender: '女', id: '3068526', comment: '' },
@@ -55,21 +55,21 @@ export default {
         { name: '王士強', gender: '男', id: '2822774', comment: '' },
         { name: '林文禹', gender: '女', id: '2234250', comment: '' },
         { name: '林旬言', gender: '男', id: '3186529', comment: '' },
-        { name: '劉禹安', gender: '男', id: '123132', comment: '' },
-        { name: '劉禹安', gender: '男', id: '123132', comment: '' },
-        { name: '劉禹安', gender: '男', id: '123132', comment: '' },
-        { name: '劉禹安', gender: '男', id: '123132', comment: '' },
+        { name: '劉品宏', gender: '男', id: '123132', comment: '' },
+        { name: '張怡婷', gender: '女', id: '123132', comment: '' },
+        { name: '張元豪', gender: '男', id: '123132', comment: '' },
+        { name: '許偉哲', gender: '男', id: '123132', comment: '' },
       ],
       data2: [
         { name: '林君宜', gender: '女', id: '2166456', comment: '' },
         { name: '王一語', gender: '女', id: '2211540', comment: '' },
         { name: '彭與哲', gender: '男', id: '2771396', comment: '' },
-        { name: '林旬言', gender: '男', id: '3186529', comment: '' },
-        { name: '林旬言', gender: '男', id: '3186529', comment: '' },
-        { name: '林旬言', gender: '男', id: '3186529', comment: '' },
-        { name: '林旬言', gender: '男', id: '3186529', comment: '' },
-        { name: '林旬言', gender: '男', id: '3186529', comment: '' },
-        { name: '林旬言', gender: '男', id: '3186529', comment: '' },
+        { name: '蘇亦', gender: '男', id: '3186529', comment: '' },
+        { name: '張凱威', gender: '男', id: '2566554', comment: '' },
+        { name: '侯逸安', gender: '男', id: '2046659', comment: '' },
+        { name: '劉永瑜', gender: '女', id: '3416523', comment: '' },
+        { name: '何美萊', gender: '女', id: '2886532', comment: '' },
+        { name: '林美比', gender: '女', id: '3582542', comment: '' },
       ],
     }
   },
@@ -77,7 +77,20 @@ export default {
     formatOrder(val) {
       return String(val).padStart(3, '0');
     },
-  }
+  },
+  methods: {
+    /**
+     * 
+     */
+     handleClickRow(row) {
+      if (row.id === '3532483' || row.id === '2392803') {
+        this.$router.push({
+          path: '/patient',
+          query: { id: row.id }
+        })
+      }
+    }
+  },
 }
 </script>
 
@@ -118,6 +131,9 @@ export default {
       }
       .t-row {
         border-top: 1px solid $gray-1;
+        &:hover {
+          background: #eee;
+        }
       }
       .t-cell {
         font-size: 12px;

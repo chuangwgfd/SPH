@@ -18,7 +18,7 @@
                 .t-cell {{ item.label }}
             .t-body
               template(v-for="(row, i) in tableData")
-                .t-row.grid(:key="i" :class="row.disabled && 'disabled'" @click="handleCheckPatient(row)")
+                .t-row.grid.pointer(:key="i" :class="row.disabled && 'disabled'" @click="handleCheckPatient(row)")
                   template(v-for="item in headers")
                     .t-cell(v-if="item.key === 'order'") {{ i+22 | formatOrder }}
                     .t-cell(v-else-if="item.key === 'name'") {{ row[item.key] | formatName }}
@@ -58,9 +58,9 @@ export default {
         { name: '吳O宇', id: '3028550', status: 'wait', comment: '' },
         { name: '楊O易', id: '2403622', status: 'wait', comment: '' },
         { name: '張O瑋', id: '2105968', status: 'wait', comment: '' },
-        { name: '廖慈安', id: '', status: 'wait', comment: '' },
-        { name: '張雅晴', id: '', status: 'wait', comment: '' },
-        { name: '王士強', id: '', status: 'wait', comment: '' },
+        { name: '廖慈安', id: '2344547', status: 'wait', comment: '' },
+        { name: '張志先', id: '3575083', status: 'wait', comment: '', clickabled: true },
+        { name: '王士強', id: '4847390', status: 'wait', comment: '' },
       ]
     };
   },
@@ -160,9 +160,11 @@ $table-border: 1px solid #ccc;
         &.disabled {
           opacity: .7;
         }
+        &:hover {
+          background: rgba(#eee, .5);
+        }
       }
       .t-cell {
-        cursor: default;
         padding: .75rem 1rem;
         &:not(:last-child) {
           border-right: $table-border;

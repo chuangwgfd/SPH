@@ -1,6 +1,6 @@
 <template lang="pug">
   .header.flex.bg-header
-    .header__logo.flex
+    .header__logo.flex.pointer(@click="$router.push('/')")
       img(:src="logo")
       .flex-col
         h2 市北公立醫院
@@ -42,7 +42,9 @@ export default {
     
     &__logo {
       height: 85px;
-      margin-right: 100px;
+      flex-grow: 1;
+      // margin-right: 100px;
+      white-space: nowrap;
       img {
         height: 100%;
         margin-right: 1rem;
@@ -61,6 +63,7 @@ export default {
     }
 
     .menu {
+      flex-basis: 800px;
       align-self: flex-end;
     }
   }
