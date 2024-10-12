@@ -23,9 +23,10 @@
                   .col {{ patientData[item.key] }}
 
               button.actionBtn.pointer.flex-col.center-center(@click="handleClickBtn")
-                span 進行
-                span 看診
-                Icon.arrow(icon="tdesign:swap-right")
+                img(:src="img")
+                //- span 進行
+                //- span 看診
+                //- Icon.arrow(icon="tdesign:swap-right")
 
             label 過敏紀錄
             .allergy.grid
@@ -52,6 +53,7 @@
 <script>
 import Layout from '@/components/Layout'
 import SideMenu from '@/components/SideMenu.vue';
+import img from '@/assets/images/4.jpg'
 import { Icon } from '@iconify/vue2';
 
 export default {
@@ -62,6 +64,7 @@ export default {
   },
   data() {
     return {
+      img,
       infoCol: [
         { label:'姓名', key: 'name' },
         { label:'身分證號碼', key: 'national_id' },
@@ -224,14 +227,10 @@ $table-border: 1px solid #ccc;
 
     .actionBtn {
       width: 90px;
-      gap: .25rem;
       background: $color-3;
-      color: #fff;
-      font-size: 18px;
-      font-weight: bold;
       border: none;
-      .arrow {
-        font-size: 26px;
+      img {
+        width: 75%;
       }
     }
 

@@ -7,15 +7,15 @@
         .tab-fake.flex-1.text-right
           span.pointer(@click="$router.push('/main')") 返回看診進度＞
       .main-section.flex
-        .left-section.flex-col
+        .left-section.flex-col.justify-between
           .info.flex-col
             span Patient ID: 2392803
             span Patient Name: Jingyi Hsu
             span Birth: 1999/07/08
             span [ Female ]
           
-          SmallTable(title="報告日期" :list="reportDate" height="180px")
-          SmallTable(title="X光檢驗報告" :list="xRay" height="220px")
+          SmallTable(title="報告日期" :list="reportDate" height="150px")
+          SmallTable(title="X光檢驗報告" :list="xRay" height="190px")
 
         .middle-section
           .flex.align-center
