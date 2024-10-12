@@ -145,7 +145,8 @@ export default {
       return this.data.find(d => d.id === String(id))
     },
   },
-  filters: {
+  mounted() {
+    window.scrollTo(0, 0); // 切换到该页面时滚动到顶部
   },
   methods: {
     handleClickBtn() {

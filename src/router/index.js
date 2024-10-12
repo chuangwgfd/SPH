@@ -33,7 +33,15 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // `savedPosition` 在使用浏览器前进、后退时会生效，返回之前的位置
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 }; // 每次导航后滚动到顶部
+    }
+  },
 })
 
 export default router

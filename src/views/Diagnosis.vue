@@ -2,6 +2,9 @@
   Layout
     .diagnosis
       .top-section 市北公立醫院 > 掛號作業｜日期：2025/1/20
+      .tabs.flex
+        .tab-item.pointer(v-for="(item, i) in tabs" :class="{ active: i === 3 }") {{ item }}
+        .tab-fake.flex-1
       .main-section.flex
         .flex-col
           .base-info.grid
@@ -23,6 +26,8 @@
                 textarea.flex-1 {{ patientData.doctor_order }}
               .flex
                 .label.text-center 診斷
+                .diagnosis-record.grid
+                  .col(v-for="item in patientData.diagnosis") {{ item }}
             .drug-table.grid
               .label.col.text-center 編號
               .label.col.text-center 藥品處置名稱
@@ -49,6 +54,13 @@ export default {
   },
   data() {
     return {
+      tabs: [
+        'F1 病歷首頁',
+        'F2 掛號進度',
+        'F3 報告查看',
+        'F4 看診作業',
+        'F5 藥物庫存',
+      ],
       infoCol: [
         { label:'姓名', key: 'name' },
         { label:'身分證號碼', key: 'national_id' },
@@ -71,8 +83,15 @@ export default {
           datetime: '2025/1/20 11:05',
           doctor_order: '病人之疾病對於現在治療有良好緩解，因腫瘤之標準葡萄糖最大攝取值低，右側肺門淋巴結沒有\n發現腫瘤轉移，本次檢查沒有發現其他異常葡萄糖聚積的地方。',
           diagnosis: [
-            { name: 'Aspirin', action1: 'FEVER', action2: '', time: '2024.03.05' },
-            { name: 'Chloramohenicol', action1: 'RASH', action2: '', time: '2024.03.05' },
+            'ICD58:041',
+            '消化不良及其他胃功能障礙',
+            'ISPA過敏',
+            'ICD45:068',
+            'ROS1基因異常',
+            '',
+            '　',
+            '　',
+            '　',
           ],
           drug: [
             { num: '520843', name: 'Bevacizumab', per_mount: '0.50', days: '7', total_mount: '7.00', usage: '1天3次' },
@@ -93,8 +112,15 @@ export default {
           datetime: '2025/1/20 13:20',
           doctor_order: '病人因確診口腔癌需進行腫瘤切除手術以及口腔重建術，進行右側頸清掃皮瓣修補手術。',
           diagnosis: [
-            { name: '　', action1: '　', action2: '　', time: '　' },
-            { name: '　', action1: '　', action2: '　', time: '　' },
+            'ICD33:026',
+            '頰粘膜惡性腫瘤',
+            '',
+            'ICD33:054',
+            '口腔癌合併右側頸部轉移',
+            '',
+            '　',
+            '',
+            '',
           ],
           drug: [
             { num: '306826', name: 'Alloponinal', per_mount: '0.50', days: '3', total_mount: '3.00', usage: '1天3次' },
@@ -133,6 +159,9 @@ export default {
       return this.data.find(d => d.id === String(id))
     },
   },
+  mounted() {
+    window.scrollTo(0, 0); // 切换到该页面时滚动到顶部
+  },
 }
 </script>
 
@@ -144,6 +173,21 @@ export default {
       background: $color-1;
       color: #fff;
       padding: .5rem 1.5rem;
+    }
+    .tabs {
+      background: $gray-3;
+      .tab-item {
+        background: #E6E6E6;
+        padding: .5rem 1.75rem;
+        border: .5px solid #ccc;
+        &.active {
+          background: $gray-3;
+          border-bottom: none;
+        }
+      }
+      .tab-fake {
+        border-bottom: .5px solid #ccc;
+      }
     }
     .main-section {
       background: $gray-3;
@@ -192,6 +236,7 @@ export default {
             border: none;
             border-color: #ccc;
             color: #666;
+            resize: none;
           }
           &>:nth-child(1) {
             .label {
@@ -207,6 +252,14 @@ export default {
             .label {
               background: $color-red;
             }
+          }
+        }
+
+        .diagnosis-record {
+          width: 100%;
+          grid-template-columns: 1fr 2.5fr 1fr;
+          .col {
+            padding: .25rem 1rem;
           }
         }
 
